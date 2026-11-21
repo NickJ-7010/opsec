@@ -22,7 +22,7 @@ RUN mkdir -p /opsec-build/DEBIAN
 RUN mkdir -p /opsec-build/usr/local/bin
 
 COPY --from=prerelease /opsec /opsec-build/usr/local/bin/opsec
-RUN chmod 0755 /opsec-build/usr/local/build/opsec
+RUN chmod 0755 /opsec-build/usr/local/bin/opsec
 
 RUN mkdir -p /tmp/packages
 

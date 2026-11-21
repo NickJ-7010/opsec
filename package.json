@@ -12,6 +12,6 @@
   },
   "dependencies": {
     "@opentui/core": "^0.9.7",
-    "@opentui/core-linux-arm64": "0.9.7"
+    "@opentui/core-linux-arm64": "^0.9.7"
   }
 }
