@@ -10,7 +10,7 @@ FROM base AS prerelease
 COPY --from=install /tmp/node_modules node_modules
 COPY . .
 
-RUN bun build --compile --target=bun-linux-arm64 --define 'process.env.OPENTUI_LIBC="glibc"' ./src/app.ts --outfile /opsec
+RUN bun build --compile --target=bun-linux-arm64 --define 'process.env.OPENTUI_LIBC="glibc"' ./src/app.tsx --outfile /opsec
 
 FROM debian:bookworm-slim AS bundler
 
@@ -42,4 +42,4 @@ FROM nginx/nginx-unprivileged:alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=bundler /repo /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 8080

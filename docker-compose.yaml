@@ -11,4 +11,4 @@ services:
         GNUPGHOME: ${GNUPGHOME}
     container_name: opsec-repo
     ports:
-      - "8080:80"
+      - "8080:8080"
