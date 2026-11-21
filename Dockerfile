@@ -37,7 +37,7 @@ COPY ./bundle.sh .
 
 RUN ./bundle.sh
 
-FROM nginx:alpine
+FROM nginx/nginx-unprivileged:alpine
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=bundler /repo /usr/share/nginx/html
