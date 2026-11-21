@@ -2,12 +2,13 @@ services:
   opsec-repo:
     build:
       context: .
-      secrets:
-        - env_file
+      args:
+        REPO_ORIGIN: ${REPO_ORIGIN}
+        REPO_CODENAME: ${REPO_CODENAME}
+        REPO_ARCH: ${REPO_ARCH}
+        GPG_PRIVATE_KEY_B64: ${GPG_PRIVATE_KEY_B64}
+        GPG_PASSPHRASE: ${GPG_PASSPHRASE}
+        GNUPGHOME: ${GNUPGHOME}
     container_name: opsec-repo
     ports:
       - "8080:80"
-
-secrets:
-  env_file:
-    file: .env

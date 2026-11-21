@@ -1,5 +1,4 @@
 set -e
-. /tmp/.env
 
 cat <<EOF > /opsec-build/DEBIAN/control
 Package: opsec

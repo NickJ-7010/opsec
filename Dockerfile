@@ -14,6 +14,13 @@ RUN bun build --compile --target=bun-linux-arm64 --define 'process.env.OPENTUI_L
 
 FROM debian:bookworm-slim AS bundler
 
+ARG REPO_ORIGIN
+ARG REPO_CODENAME
+ARG REPO_ARCH
+ARG GPG_PRIVATE_KEY_B64
+ARG GPG_PASSPHRASE
+ARG GNUPGHOME
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends reprepro gnupg && \
     rm -rf /var/lib/apt/lists/*
@@ -28,7 +35,7 @@ RUN mkdir -p /tmp/packages
 
 COPY ./bundle.sh .
 
-RUN --mount=type=secret,id=env_file,target=/tmp/.env ./bundle.sh
+RUN ./bundle.sh
 
 FROM nginx:alpine
 
