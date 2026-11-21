@@ -4,7 +4,7 @@ FROM base AS install
 RUN mkdir -p /tmp
 COPY package.json bun.lock /tmp/
 
-RUN cd /tmp && bun install --frozen-lockfile --production
+RUN cd /tmp && bun install --frozen-lockfile --production --os linux --cpu arm64
 
 FROM base AS prerelease
 COPY --from=install /tmp/node_modules node_modules
