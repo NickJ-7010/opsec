@@ -1,0 +1,13 @@
+services:
+  opsec-repo:
+    build:
+      context: .
+      secrets:
+        - env_file
+    container_name: opsec-repo
+    ports:
+      - "8080:80"
+
+secrets:
+  env_file:
+    file: .env
