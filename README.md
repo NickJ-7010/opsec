@@ -30,3 +30,16 @@ Suites: <Your distro's codename (eg. 'trixie' for Debian 13, 'resolute' for Ubun
 Components: main
 Signed-By: /etc/apt/keyrings/csh-opsec.gpg
 ```
+
+# Usage
+After you have added the gpg key to your keyring and added the repository's source information you can now install any package from it!
+
+To achieve greatness, now run this command to install opsec onto your machine.
+```bash
+sudo apt install opsec
+```
+
+Once you install opsec, you can simply run it by executing the binary.
+```bash
+opsec
+```
