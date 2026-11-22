@@ -1,23 +1,32 @@
-# opsec
+opsec
+=====
 
-To install dependencies:
+opsec is an apt repository that you can add to your debian-based machine to install opsec whenever you want!
 
+# Installation
+To add the repo to your machine you first need to add the repo's public key into your system's keyring so it can validate the binary.
+
+Create the the keyring directory if it doesn't already exist.
 ```bash
-bun install
+sudo mkdir -p /etc/apt/keyrings
 ```
 
-To run:
-
+Next you'll want to download the public key from CSH's servers, this does require that you have the `gnupg` package installed to decode the key.
 ```bash
-bun run
+curl -fsSL https://opsec.cs.house | sudo gpg --dearmor -o /etc/apt/keyrings/csh-opsec.gpg
 ```
 
-To type check:
-
+Then you'll need to make sure the key is readable by all users on the machine, not just root.
 ```bash
-bun check
+sudo chmod a+r /etc/apt/keyrings/csh-opsec.gpg
 ```
 
-Run `bun fmt` to format the code.
-
-This project was created using `bun init` in bun v1.4.5. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Now that you have the public key installed in your system you will need to add the actual repo information to your apt, this is accomplished by creating a file at `/etc/apt/sources.list.d/csh-opsec.source` with the contents below.
+You will need to change the `Suites` value to be that of your actual distro's major release.
+```
+Types: deb
+URIs: https://opsec.cs.house
+Suites: <Your distro's codename (eg. 'trixie' for Debian 13, 'resolute' for Ubuntu 26.04)>
+Components: main
+Signed-By: /etc/apt/keyrings/csh-opsec.gpg
+```
