@@ -5,7 +5,7 @@ const App = () => {
     return (
         <box width="100%" height="100%" backgroundColor="#14090A">
             <text>
-                Please stand by while for OPSEC to commence...
+                Please stand by for OPSEC to commence...
             </text>
             <video
                 id="player"
