@@ -39,10 +39,6 @@ fi
 
 gpg --armor --output /repo/repo-key.gpg --export "$KEY_ID"
 
-# Publish the freshly built packages into every requested distribution. Each
-# codename gets its own stanza in the reprepro distributions file and its own
-# Release/Packages metadata under /repo/dists/<codename>, with binaries pooled
-# under /repo/pool/.
 CODENAMES="$REPO_CODENAMES"
 
 rm -f /repo/conf/distributions
@@ -62,6 +58,10 @@ Components: main
 Description: A simple CSH OPSEC provider.
 SignWith: $KEY_ID
 EOF
+done
 
+for codename in $CODENAMES; do
     reprepro -b /repo includedeb "$codename" /tmp/packages/*.deb
 done
+
+reprepro -b /repo export
