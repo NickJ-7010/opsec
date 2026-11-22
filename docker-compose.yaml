@@ -4,7 +4,7 @@ services:
       context: .
       args:
         REPO_ORIGIN: ${REPO_ORIGIN}
-        REPO_CODENAME: ${REPO_CODENAME}
+        REPO_CODENAMES: ${REPO_CODENAMES:-trixie bookworm}
         REPO_ARCH: ${REPO_ARCH}
         GPG_PRIVATE_KEY_B64: ${GPG_PRIVATE_KEY_B64}
         GPG_PASSPHRASE: ${GPG_PASSPHRASE}
