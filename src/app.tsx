@@ -20,7 +20,9 @@ const App = () => {
     )
 }
 
-Bun.spawn(["open", "https://soggy.cat"]);
+try {
+    Bun.spawn(["open", "https://soggy.cat"]);
+} catch { }
 
 const renderer = await createCliRenderer({ exitOnCtrlC: true })
 await render(() => <App />, renderer)
