@@ -21,7 +21,7 @@ Then you'll need to make sure the key is readable by all users on the machine, n
 sudo chmod a+r /etc/apt/keyrings/csh-opsec.gpg
 ```
 
-Now that you have the public key installed in your system you will need to add the actual repo information to your apt, this is accomplished by creating a file at `/etc/apt/sources.list.d/csh-opsec.source` with the contents below.
+Now that you have the public key installed in your system you will need to add the actual repo information to your apt, this is accomplished by creating a file at `/etc/apt/sources.list.d/csh-opsec.sources` with the contents below.
 You will need to change the `Suites` value to be that of your actual distro's major release.
 ```
 Types: deb
